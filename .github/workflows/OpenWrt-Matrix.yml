@@ -108,16 +108,10 @@ jobs:
           # sha_match rule
           sha_match="$name_lower"
 
-          # ext4_zip/sfs_zip rule
-          if [ "$name_lower" = "x86" ]; then
-            ext4_zip='*ext4-combined*'
-            sfs_zip='*squashfs-combined*'
-            sysupgrade_glob='*combined-efi.img*'
-          else
-            ext4_zip="*$name_lower*ext4*"
-            sfs_zip="*$name_lower*squashfs*"
-            sysupgrade_glob='*sysupgrade.img*'
-          fi
+          # ext4_zip/sfs_zip rule (R2S only)
+          ext4_zip="*$name_lower*ext4*"
+          sfs_zip="*$name_lower*squashfs*"
+          sysupgrade_glob='*sysupgrade.img*'
 
           # workerid variable
           workerid=${{ github.run_id }}

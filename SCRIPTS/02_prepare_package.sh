@@ -117,17 +117,12 @@ popd
 ### Other Kernel Hack 部分 ###
 # make olddefconfig
 wget -qO - https://github.com/openwrt/openwrt/commit/c21a3570.patch | patch -p1
-# igc-fix
-cp -rf ../lede/target/linux/x86/patches-${KERNEL_VERSION}/996-intel-igc-i225-i226-disable-eee.patch ./target/linux/x86/patches-${KERNEL_VERSION}/996-intel-igc-i225-i226-disable-eee.patch
 # btf
 cp -rf ../PATCH/kernel/btf/* ./target/linux/generic/hack-${KERNEL_VERSION}/
 
 ### 获取额外的基础软件包 ###
 # Disable Mitigations
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/default.bootscript
-sed -i 's,@CMDLINE@ noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.cfg
-sed -i 's,@CMDLINE@ noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
-sed -i 's,@CMDLINE@ noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
 
 ### ADD PKG 部分 ###
 cp -rf ../OpenWrt-Add ./package/new
@@ -147,7 +142,6 @@ git clone https://github.com/QiuSimons/vmlinux-btf ./package/new/vmlinux-btf
 # RK
 sed -i '/REQUIRE_IMAGE_METADATA/d' target/linux/rockchip/armv8/base-files/lib/upgrade/platform.sh
 wget https://github.com/coolsnowwolf/lede/raw/refs/heads/master/target/linux/rockchip/patches-6.12/991-arm64-dts-rockchip-add-more-cpu-operating-points-for.patch -O target/linux/rockchip/patches-6.12/991.patch
-wget https://github.com/coolsnowwolf/lede/raw/refs/heads/master/target/linux/rockchip/patches-6.12/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz.patch -O target/linux/rockchip/patches-6.12/992.patch
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 rm -rf ./package/new/feeds_packages_lang_node-prebuilt
