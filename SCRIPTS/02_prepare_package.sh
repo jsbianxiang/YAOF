@@ -210,8 +210,6 @@ rm -rf ./package/network/services/odhcpd
 cp -rf ../openwrt_ma/package/network/services/odhcpd ./package/network/services/odhcpd
 rm -rf ./package/network/ipv6/odhcp6c
 cp -rf ../openwrt_ma/package/network/ipv6/odhcp6c ./package/network/ipv6/odhcp6c
-# watchcat
-echo > ./feeds/packages/utils/watchcat/files/watchcat.config
 # 默认开启 Irqbalance
 #sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
 
