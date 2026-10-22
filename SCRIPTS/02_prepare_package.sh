@@ -129,7 +129,7 @@ cp -rf ../OpenWrt-Add ./package/new
 rm -rf ./package/new/shortcut-fe
 # nft-fullcone is superseded by the Broadcom scheme; drop its kmod from the build
 # and from addition-trans-zh's DEPENDS, which would otherwise reference a package
-# that no longer exists (07_fw3.sh does the iptables-side equivalent).
+# that no longer exists (iptables-side fullcone handling is obsolete: nft-only now).
 rm -rf ./package/new/lede_pkg/fullconenat-nft
 sed -i 's/ +kmod-nft-fullcone//' ./package/new/addition-trans-zh/Makefile
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,frp,microsocks,shadowsocks-libev,zerotier,daed}
