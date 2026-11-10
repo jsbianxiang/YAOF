@@ -1,0 +1,4 @@
+# 统一按 LF 存储与检出。
+# 目的只有一个：/etc/uci-defaults 与 /etc/init.d 下的 shell 脚本不能被检出成 CRLF，
+# 否则 shebang 变成 "#!/bin/sh\r"，或者 uci 的取值里混进 \r，在路由器上直接失效。
+* text=auto eol=lf
